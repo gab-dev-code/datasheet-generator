@@ -1,0 +1,268 @@
+\documentclass[10pt]{article}
+\usepackage{cmbright}
+\usepackage[
+    a4paper, 
+    left=1.5cm, 
+    right=1.5cm, 
+    top=1.5cm, 
+    bottom=1.5cm
+]{geometry}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{colortbl} 
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{tabularx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{helvet}
+\usepackage{datatool} % CSV Handling
+\usepackage{subcaption}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+% Define colors
+\definecolor{solarixblue}{RGB}{150,175,190}
+\definecolor{lightgray}{RGB}{240,240,240}
+
+% CSV Data Variables - Replace these with your CSV values
+\DTLloaddb{panels}{data.csv}
+
+\newcommand{\moduletechnology}{glass-glass, Back Contact M10 HC}
+\newcommand{\maxsystemvoltage}{1000 V}
+\newcommand{\bypassdiodes}{2}
+\newcommand{\connectors}{Stäubli MC4-Evo 2, 4mm$^2$}
+\newcommand{\tempcoeffisc}{0.06 \%}
+\newcommand{\tempcoeffvoc}{-0.30 \%}
+\newcommand{\tempcoeffpmax}{-0.32 \%}
+
+\newcommand{\disclaimer}{Note: Due to continuous technical innovation, R\&D and improvement, the technical data mentioned in this document may be modified accordingly. Solarix has the sole right to make such modifications at any time without prior notice. The demanding party shall request the latest datasheet for such a contract need, and make it a consistent and binding part of lawful documentation duly signed by both parties.}
+
+\newcommand{\warrantycolor}{10 years warranty on colour retention}
+\newcommand{\warrantymaterial}{10 years warranty for materials and processing}
+\newcommand{\warrantypower}{25 years warranty extra linear power output}
+\newcommand{\degradationfirst}{\lt 2\%}
+\newcommand{\degradationyearly}{<0.55\%/year over years 2-25}
+\newcommand{\guaranteedpower}{85\% guaranteed power after 25 years}
+\newcommand{\fireclassification}{B-s1, d0 (EN 13501-1)}
+\newcommand{\companyaddress}{Flevolaan 19, 1382 JX Weesp, The Netherlands}
+\newcommand{\companyemail}{\href{mailto:info@solarix-solar.com}{\textcolor{solarixblue}{info@solarix-solar.com}}}
+\newcommand{\companywebsite}{\href{https://solarix-solar.com}{solarix-solar.com}}
+
+
+
+\begin{document}
+\pagestyle{empty}
+
+\DTLforeach{panels}{%
+    % Map CSV headers to LaTeX commands
+    \seriesname=series, \designname=design, \collection=coll, \colorname=color, \designdetails=detail, \pmax=pmax, \voc=voc, \isc=isc, \vmp=vmp, \imp=imp, \eff=eff,
+    \weight=weight, \width=w, \height=h, \thickval=t, \photo=photo %
+}{%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{raggedright}
+{\noindent \includegraphics[height=1.2cm]{photos/logo.png}}\\[0.5cm]
+{\LARGE\bfseries High-performance}\\
+{\LARGE\bfseries solar panels}\\
+{\LARGE\bfseries with unparalleled}\\
+{\LARGE\bfseries design}\\[1cm]
+
+{\large{Product datasheet}}\\
+{\large\seriesname}
+\end{raggedright}
+
+\vspace{4cm}
+\noindent
+\colorbox{solarixblue}{
+\begin{minipage}{\textwidth}
+    \vspace*{2em}
+    \begin{minipage}[t]{0.48\textwidth}
+    \subsection*{Unparalleled aesthetics}
+    \textcolor{white}{At Solarix we look from a design point of view to solar applications. We make them both beautiful and long-lasting. Our design team is constantly developing colours and designs that make your facade the most eye-catching one in town.}
+    
+    \subsection*{High-quality product}
+    \textcolor{white}{The high-performance solar cells are sandwiched between extremely stable tempered glass plates, guaranteeing a trustworthy performance and a supreme longevity. Our colour techniques have the best-in-class retention based on inorganic pigments that remain virtually unaffected by UV radiation.}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+    \subsection*{Quality}
+    \noindent \textcolor{white}{\warrantycolor} \\
+    \noindent \textcolor{white}{\warrantymaterial} \\
+    \noindent \textcolor{white}{\warrantypower}
+    
+    \subsection*{Linear power degradation warranty}
+    \noindent \textcolor{white}{First year $<$ 2\%, $<$ 0.55\%/year for years 2-25} \\ 
+    \noindent \textcolor{white}{85\% guaranteed power after 25 years}
+    
+    \subsection*{Fire classification}
+    \noindent \textcolor{white}{\fireclassification}
+    \end{minipage}
+    \vspace*{2em}
+\end{minipage}
+}
+
+\vfill
+
+{\footnotesize
+\noindent \disclaimer
+
+\vspace{0.5cm}
+
+\noindent\textbf{Contact information} \quad \companyaddress \quad \companyemail \quad \companywebsite
+}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent \includegraphics[height=0.6cm]{photos/logo.png} \hspace{2cm} \normalsize Product datasheet \seriesname
+
+\vspace{1cm}
+
+\begin{table}[h]
+\centering
+{
+    \begin{tabular}{p{0.35\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Design name} & \designname \\
+    \midrule
+    \textbf{Collection} & \collection \\
+    \midrule
+    \textbf{Design} & \\
+    \midrule
+    \textbf{Colour} & \colorname \\
+    \midrule
+    \textbf{Colour details} & \\
+    \midrule
+    \textbf{Design details} & \designdetails \\
+    \bottomrule
+    & \\
+    \multicolumn{2}{l}{\textcopyright \quad European registered design (ERD)} \\
+    \end{tabular}
+}
+\end{table}
+
+\vspace{1cm}
+
+\begin{figure}[h]
+    \begin{subfigure}{0.47\textwidth}
+    \centering
+        \includegraphics[width=0.9\linewidth]{photos/solarix-me-854-pastel-blue-leunend_80procent_lowress.jpg}
+    \end{subfigure}
+\hspace{2cm}
+    \begin{subfigure}{0.47\textwidth}
+    \centering
+        \includegraphics[scale=0.8, angle=90]{photos/\photo}
+    \end{subfigure}
+\end{figure}
+
+\vfill
+
+{\footnotesize
+\noindent \disclaimer
+
+\vspace{0.5cm}
+
+\noindent\textbf{Contact information} \quad \companyaddress \quad \companyemail \quad \companywebsite
+}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent \includegraphics[height=0.6cm]{photos/logo.png} \hspace{2cm} \normalsize Product datasheet \seriesname
+
+
+\section*{Solar panel: general data}
+
+\begin{table}[h]
+\centering
+    \begin{tabular}{p{0.35\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Series name} & \seriesname \\
+    \midrule
+    \textbf{Module technology} & \moduletechnology \\
+    \midrule
+    \textbf{W × H × t} & \width \ × \height \ × \thickval \ mm  \\
+    \midrule
+    \textbf{Max. system voltage} & \maxsystemvoltage \\
+    \midrule
+    \textbf{Weight} & approx. \weight \ kg\\
+    \midrule
+    \textbf{By-pass diodes} & \bypassdiodes \\
+    \midrule
+    \textbf{Connectors} & \connectors \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\vspace{0.3cm}
+
+\section*{Electrical data (STC)}
+
+{\footnotesize STC (Standard Test Conditions): Illumination intensity 1,000 W/m$^2$, spectral distribution AM 1.5; Temperature 25 $\pm$ 2$^\circ$ C in accordance with EN 60904-3.}
+
+\vspace{0.3cm}
+
+\begin{minipage}{0.48\textwidth}
+\centering
+\begin{tabular}{ll}
+\toprule
+Maximum power, $P_{max}$ & \pmax \ Wp \\
+Open-circuit voltage, $V_{oc}$ & \voc \ V \\
+Short-circuit current, $I_{sc}$ & \isc \ A \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+\centering
+\begin{tabular}{ll}
+\toprule
+Voltage at max. power, $V_{mpp}$ & \vmp \ V \\
+Current at max. power, $I_{mpp}$ & \imp \ A \\
+Efficiency, $\eta$ & \eff \ \% \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+
+\vspace{0.5cm}
+
+{\noindent \footnotesize Measurement tolerances: $P_{max} \pm$ 10\%; $V_{oc}\pm$10\%; $I_{sc} \pm$ 10\%, $I_{mpp} \pm$ 10\%, Reverse-current power rating $I_r = 10 A$, operating modules with an external power source is only permissible if using a phase fuse with a tripping current of $\leq$ 10 A.}
+
+\section*{Temperature coefficients}
+
+\begin{table}[h]
+\centering
+    \begin{tabular}{p{0.35\textwidth} p{0.6\textwidth}}
+    \toprule
+    \textbf{Temperature coefficient of $I_{sc}$} & \tempcoeffisc \\
+    \midrule
+    \textbf{Temperature coefficient of $V_{oc}$} & \tempcoeffvoc \\
+    \midrule
+    \textbf{Temperature coefficient of $P_{max}$} & \tempcoeffpmax \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\linewidth]{photos/IV_curve_2.png}
+\end{figure}
+
+\vspace{0.3cm}
+
+\noindent{\footnotesize Solarix \textcopyright \quad Product datasheet according to EN50380:2003}\\
+{\footnotesize Certification IEC 61215 \& IEC 61730}
+
+\vspace{0.3cm}
+
+{\footnotesize
+\noindent \disclaimer
+\vspace{0.3cm}
+\noindent\textbf{Contact information} \quad \companyaddress \quad \companyemail \quad \companywebsite
+\newpage
+}
+
+}
+\end{document}
