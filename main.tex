@@ -56,11 +56,11 @@
 \begin{document}
 \pagestyle{empty}
 
-% \DTLforeach{panels}{%
-%     % Map CSV headers to LaTeX commands
-%     \seriesname=series, \designname=design, \collection=coll, \colorname=color, \designdetails=detail, \pmax=pmax, \voc=voc, \isc=isc, \vmp=vmp, \imp=imp, \eff=eff,
-%     \weight=weight, \width=w, \height=h, \thickval=t, \photo=photo %
-% }{%
+\DTLforeach{panels}{%
+    % Map CSV headers to LaTeX commands
+    \seriesname=series, \designname=design, \collection=coll, \colorname=color, \designdetails=detail, \pmax=pmax, \voc=voc, \isc=isc, \vmp=vmp, \imp=imp, \eff=eff,
+    \weight=weight, \width=w, \height=h, \thickval=t, \photo=photo %
+}{%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{raggedright}
 {\noindent \includegraphics[height=1.2cm]{photos/logo.png}}\\[0.5cm]
@@ -264,5 +264,5 @@ Efficiency, $\eta$ & \eff \ \% \\
 \newpage
 }
 
-% }
+}
 \end{document}
